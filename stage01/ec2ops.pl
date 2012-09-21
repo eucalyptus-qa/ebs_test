@@ -2275,13 +2275,11 @@ sub doexit {
     print_all_metadata();
 
     if ($cleanup || $code) {
-###	DO NOT CLEAN UP FOR POPULATE EBS	092012
+	print "BEGIN CLEANING UP TEST ARTIFACTS\n----------------\n";
 
-#	print "BEGIN CLEANING UP TEST ARTIFACTS\n----------------\n";
+	my $fails = docleanup();
 
-#	my $fails = docleanup();
-
-#	print "END CLEANING UP (cleanup failures=$fails)\n---------------\n";
+	print "END CLEANING UP (cleanup failures=$fails)\n---------------\n";
     }
 
     if ( -f "$ofile" ) {
