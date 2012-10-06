@@ -1,7 +1,7 @@
 use List::Util qw[min max];
 
 $prefix = "euca";
-$runat = "runat 30";
+$runat = "runat 60";
 %cleanup_artifacts, %static_artifacts, %current_artifacts;
 $remote_pre = "";
 $remote_post = "";
