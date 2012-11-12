@@ -1,3 +1,48 @@
+
+ebs_test
+========
+
+## Description
+
+Test EBS-related functionality of Eucalyptus
+
+## Procedure
+
+1. Create between 1 and 3 keys using ec2-add-keypair
+2. Create 1 managed ip using ec2-llocate-address
+3. Create 1-3 groups using ec2-add-group
+4. Create ingress rules for icmp and ssh using ec2-authorize-group for each group
+5. Get available EMIs on the box, choose a random one
+6. Get the keypairs, choose a random one
+7. Get admin addresses choose a random one
+8. Get groups and choose a random one that is not default
+9. Run 1 instance with those parameters
+10. Check for running test instance, loop TRIES times waiting for INTERVAL seconds in between checks
+11. [FAIL] The instance never started
+12. Get the instance key pair
+13. Create a volume of size VOLSIZE GB
+14. Check that the volume is ready for TRIES times waiting for INTERVAL seconds
+15. Attach volume to the instance with the name /dev/vda
+16. Make sure device is ready
+17. mkfs.ext2 for /dev/vda then mount the volume to the instance at /mnt
+18. Write a file to the volume at /mnt/mark
+19. Cat the file and ensure it is the same as when we made it
+20. Unmount volume
+21. Detach volume from instance
+22. Create a snapshot of the volume, check that it is completed
+23. Create a volume with the snapshot, check that it completed
+24. Ensure the volume is ready
+25. Attach the new volume to the instance and check that it is available at /dev/vdb
+26. Mount the volume to /mnt
+27. Check that the file we created is still there and accurate
+28. Unmount the volume
+29. Detach the volume
+30. Delete all volumes and snapshots
+
+
+
+<hr><hr><hr>
+
 # Eucalyptus Testunit Framework
 
 Eucalyptus Testunit Framework is designed to run a list of test scripts written by Eucalyptus developers.
